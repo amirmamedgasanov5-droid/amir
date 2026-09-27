@@ -4,20 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Амир Мамедгасанов | Amir Mamedgasanov — MMA Fighter, Bull Fight Club</title>
-<meta name="description" content="Амир Мамедгасанов (Amir Mamedgasanov) — юный боец MMA, воспитанник Bull Fight Club MMA (Разино). Рекорд: 2 победы, 0 поражений. Возраст 12 лет, вес 34 кг.">
+<meta name="description" content="Амир Мамедгасанов (Amir Mamedgasanov) — юный боец MMA, воспитанник Bull Fight Club MMA (Разино). Рекорд: 3 победы, 0 поражений. Возраст 12 лет, вес 34 кг.">
 <meta name="keywords" content="Amir Mamedgasanov, Amir Mamedgasanov MMA fighter, Амир Мамедгасанов, Амир Мамедгасанов MMA, Bull Fight Club MMA, Bull Fight Club Razino, Разино MMA, юный боец MMA, детский MMA боец">
 <meta name="author" content="Amir Mamedgasanov">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Амир Мамедгасанов | Amir Mamedgasanov — MMA Fighter">
-<meta property="og:description" content="Профиль бойца MMA Амира Мамедгасанова (Bull Fight Club, Разино). Рекорд: 2-0.">
+<meta property="og:description" content="Профиль бойца MMA Амира Мамедгасанова (Bull Fight Club, Разино). Рекорд: 3-0.">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="az_AZ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Amir Mamedgasanov — MMA Fighter">
-<meta name="twitter:description" content="Bull Fight Club MMA, Razino. Record: 2-0.">
+<meta name="twitter:description" content="Bull Fight Club MMA, Razino. Record: 3-0.">
 
 <script type="application/ld+json">
 {
@@ -32,7 +32,7 @@
     "location": "Razino"
   },
   "birthDate": "2013-10-12",
-  "description": "MMA fighter, member of Bull Fight Club MMA (Razino). Current record: 2 wins, 0 losses."
+  "description": "MMA fighter, member of Bull Fight Club MMA (Razino). Current record: 3 wins, 0 losses."
 }
 </script>
 
@@ -43,14 +43,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0F0D0C;
-    --ink-2:#171310;
-    --crimson:#C4272B;
-    --crimson-dim:#7A1A1D;
-    --bone:#F1EADF;
-    --bone-dim:#B8AFA1;
-    --gold:#C89B3C;
-    --line: rgba(241,234,223,0.14);
+    --ink:#080707;
+    --ink-2:#12100E;
+    --ink-3:#1A1715;
+    --crimson:#E62227;
+    --crimson-glow:rgba(230,34,39,0.35);
+    --crimson-dim:#8A1518;
+    --bone:#F8F4EE;
+    --bone-dim:#A39B8E;
+    --gold:#FFC845;
+    --gold-glow:rgba(255,200,69,0.25);
+    --line: rgba(248,244,238,0.1);
+    --line-accent: rgba(230,34,39,0.3);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -63,15 +67,28 @@
     font-family:'Barlow', sans-serif;
     overflow-x:hidden;
     position:relative;
+    min-height:100vh;
+  }
+
+  /* ambient glow backdrop */
+  body::before{
+    content:"";
+    position:fixed;
+    top:-20%; left:50%;
+    transform:translateX(-50%);
+    width:1000px; height:600px;
+    background:radial-gradient(ellipse at center, rgba(230,34,39,0.12) 0%, rgba(200,155,60,0.04) 45%, transparent 70%);
+    pointer-events:none;
+    z-index:0;
   }
 
   /* textured canvas backdrop */
-  body::before{
+  body::after{
     content:"";
     position:fixed; inset:0;
     background-image:
-      repeating-linear-gradient(115deg, rgba(241,234,223,0.025) 0px, rgba(241,234,223,0.025) 1px, transparent 1px, transparent 90px),
-      repeating-linear-gradient(25deg, rgba(241,234,223,0.02) 0px, rgba(241,234,223,0.02) 1px, transparent 1px, transparent 90px);
+      repeating-linear-gradient(115deg, rgba(248,244,238,0.015) 0px, rgba(248,244,238,0.015) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(25deg, rgba(248,244,238,0.015) 0px, rgba(248,244,238,0.015) 1px, transparent 1px, transparent 80px);
     pointer-events:none;
     z-index:0;
   }
@@ -81,102 +98,122 @@
   /* ===== TOP BAR ===== */
   .topbar{
     display:flex; justify-content:space-between; align-items:center;
-    padding:26px 0;
+    padding:28px 0;
     border-bottom:1px solid var(--line);
+    backdrop-filter:blur(10px);
   }
   .brand{
     font-family:'Barlow Condensed', sans-serif;
-    font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-    font-size:14px; color:var(--bone-dim);
+    font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+    font-size:15px; color:var(--bone-dim);
+    display:flex; align-items:center; gap:8px;
   }
-  .brand span{ color:var(--crimson); }
+  .brand::before{
+    content:""; display:inline-block; width:8px; height:8px;
+    background:var(--crimson); box-shadow:0 0 10px var(--crimson);
+  }
+  .brand span{ color:var(--crimson); font-weight:800; }
   .division{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
     color:var(--bone-dim);
     text-align:right;
   }
 
   /* ===== HERO ===== */
   .hero{
-    padding:64px 0 40px;
+    padding:68px 0 40px;
     position:relative;
   }
   .eyebrow{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:14px; letter-spacing:0.28em; text-transform:uppercase;
+    font-size:14px; letter-spacing:0.3em; text-transform:uppercase;
     color:var(--crimson);
     display:flex; align-items:center; gap:12px;
-    margin-bottom:18px;
+    margin-bottom:20px;
+    font-weight:600;
   }
   .eyebrow::before{
-    content:""; width:34px; height:2px; background:var(--crimson);
+    content:""; width:36px; height:2px;
+    background:linear-gradient(90deg, var(--crimson), transparent);
   }
 
   .fighter-name{
     font-family:'Anton', sans-serif;
     font-weight:400;
     text-transform:uppercase;
-    font-size:clamp(48px, 10vw, 108px);
-    line-height:0.92;
-    letter-spacing:0.01em;
+    font-size:clamp(52px, 11vw, 115px);
+    line-height:0.9;
+    letter-spacing:0.02em;
     color:var(--bone);
+    text-shadow:0 10px 30px rgba(0,0,0,0.5);
   }
-  .fighter-name .accent{ color:var(--crimson); }
+  .fighter-name .accent{
+    color:var(--crimson);
+    text-shadow:0 0 20px var(--crimson-glow);
+  }
 
   .hero-sub{
-    display:flex; flex-wrap:wrap; gap:10px 28px;
-    margin-top:22px;
+    display:flex; flex-wrap:wrap; gap:12px 28px;
+    margin-top:28px;
     font-family:'Barlow Condensed', sans-serif;
-    font-size:19px; letter-spacing:0.03em;
+    font-size:20px; letter-spacing:0.04em;
     color:var(--bone-dim);
+    align-items:center;
   }
   .hero-sub b{ color:var(--bone); font-weight:600; }
-  .hero-sub .sep{ color:var(--crimson-dim); }
+  .hero-sub .sep{ color:var(--crimson); opacity:0.6; }
 
   /* ===== RECORD SCOREBOARD (signature element) ===== */
   .scoreboard{
-    margin-top:52px;
-    border:1px solid var(--line);
-    background:linear-gradient(180deg, var(--ink-2), var(--ink));
+    margin-top:56px;
+    border:1px solid var(--line-accent);
+    background:linear-gradient(135deg, var(--ink-3) 0%, var(--ink-2) 100%);
     position:relative;
-    overflow:hidden;
+    border-radius:2px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
   }
   .scoreboard::before{
     content:"";
-    position:absolute; left:0; top:0; bottom:0; width:6px;
-    background:var(--crimson);
+    position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:linear-gradient(180deg, var(--gold), var(--crimson));
+    box-shadow:0 0 15px var(--crimson-glow);
   }
   .scoreboard-inner{
     display:grid;
     grid-template-columns: 1fr auto 1fr;
     align-items:center;
-    padding:38px 40px;
-    gap:20px;
+    padding:42px 48px;
+    gap:24px;
   }
   .record-label{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:13px; letter-spacing:0.24em; text-transform:uppercase;
+    font-size:13px; letter-spacing:0.26em; text-transform:uppercase;
     color:var(--bone-dim);
-    margin-bottom:10px;
+    margin-bottom:8px;
+    font-weight:600;
   }
   .record-block{ text-align:left; }
   .record-block.losses{ text-align:right; }
   .record-num{
     font-family:'Anton', sans-serif;
-    font-size:clamp(56px, 9vw, 96px);
-    line-height:1;
+    font-size:clamp(64px, 10vw, 110px);
+    line-height:0.95;
     color:var(--bone);
     font-variant-numeric: tabular-nums;
   }
-  .record-block.wins .record-num{ color:var(--gold); }
-  .record-block.losses .record-num{ color:var(--bone-dim); }
+  .record-block.wins .record-num{
+    color:var(--gold);
+    text-shadow:0 0 30px var(--gold-glow);
+  }
+  .record-block.losses .record-num{ color:var(--bone-dim); opacity:0.4; }
 
   .record-tag{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:14px; letter-spacing:0.18em; text-transform:uppercase;
+    font-size:14px; letter-spacing:0.22em; text-transform:uppercase;
     color:var(--bone-dim);
-    margin-top:6px;
+    margin-top:8px;
+    font-weight:600;
   }
 
   .record-divider{
@@ -184,35 +221,45 @@
   }
   .record-divider .dash{
     font-family:'Anton', sans-serif;
-    font-size:clamp(40px,6vw,64px);
-    color:var(--crimson-dim);
+    font-size:clamp(44px,7vw,72px);
+    color:var(--crimson);
+    opacity:0.8;
   }
   .streak{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
-    color:var(--crimson);
+    font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold);
+    background:rgba(255,200,69,0.08);
+    border:1px solid rgba(255,200,69,0.2);
+    padding:4px 10px;
+    border-radius:2px;
     white-space:nowrap;
+    font-weight:600;
   }
 
   .win-marks{
-    display:flex; gap:8px; padding:0 40px 30px;
+    display:flex; gap:12px; padding:0 48px 32px;
     border-top:1px solid var(--line);
-    padding-top:22px;
+    padding-top:24px;
   }
   .mark{
-    width:34px; height:34px;
+    width:38px; height:38px;
+    background:rgba(255,200,69,0.1);
     border:2px solid var(--gold);
     display:flex; align-items:center; justify-content:center;
     font-family:'Barlow Condensed', sans-serif;
-    font-weight:700; font-size:15px;
+    font-weight:700; font-size:16px;
     color:var(--gold);
+    box-shadow:0 0 12px var(--gold-glow);
     transform: scale(0);
     animation: pop 0.45s cubic-bezier(.2,1.4,.4,1) forwards;
   }
   .mark.pending{
+    background:transparent;
     border-color:var(--line);
     color:var(--bone-dim);
-    opacity:0.5;
+    box-shadow:none;
+    opacity:0.3;
   }
   .mark:nth-child(1){ animation-delay:0.15s; }
   .mark:nth-child(2){ animation-delay:0.3s; }
@@ -221,31 +268,37 @@
 
   /* ===== TALE OF THE TAPE ===== */
   .tape{
-    margin-top:64px;
+    margin-top:72px;
   }
   .section-title{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:14px; letter-spacing:0.24em; text-transform:uppercase;
+    font-size:15px; letter-spacing:0.26em; text-transform:uppercase;
     color:var(--bone-dim);
-    padding-bottom:14px;
+    padding-bottom:16px;
     border-bottom:1px solid var(--line);
     margin-bottom:0;
     display:flex; justify-content:space-between;
+    font-weight:600;
   }
   .section-title span{ color:var(--crimson); }
 
   .stat-row{
     display:grid;
     grid-template-columns: 1fr 1.4fr;
-    padding:22px 0;
+    padding:24px 16px;
     border-bottom:1px solid var(--line);
     align-items:baseline;
+    transition:background 0.25s, padding-left 0.25s;
   }
-  .stat-row:hover{ background:rgba(196,39,43,0.04); }
+  .stat-row:hover{
+    background:linear-gradient(90deg, rgba(230,34,39,0.06), transparent);
+    padding-left:22px;
+  }
   .stat-key{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:15px; letter-spacing:0.14em; text-transform:uppercase;
+    font-size:16px; letter-spacing:0.16em; text-transform:uppercase;
     color:var(--bone-dim);
+    font-weight:500;
   }
   .stat-val{
     font-family:'Barlow', sans-serif;
@@ -255,29 +308,31 @@
   .stat-val small{
     display:block;
     font-family:'Barlow Condensed', sans-serif;
-    font-size:14px; font-weight:400; letter-spacing:0.05em;
-    color:var(--bone-dim);
-    margin-top:3px;
+    font-size:14px; font-weight:400; letter-spacing:0.06em;
+    color:var(--gold);
+    margin-top:4px;
   }
 
   /* ===== FOOTER ===== */
   footer{
-    margin-top:64px;
-    padding:30px 0 50px;
+    margin-top:80px;
+    padding:36px 0 60px;
+    border-top:1px solid var(--line);
     display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:14px;
+    flex-wrap:wrap; gap:16px;
   }
   .foot-line{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:13px; letter-spacing:0.1em;
+    font-size:14px; letter-spacing:0.12em;
     color:var(--bone-dim);
   }
   .foot-line b{ color:var(--crimson); }
 
   @media (max-width:640px){
-    .scoreboard-inner{ grid-template-columns:1fr auto 1fr; padding:26px 18px; gap:10px; }
-    .stat-row{ grid-template-columns:1fr; gap:6px; }
-    .win-marks{ padding:0 18px 24px; }
+    .scoreboard-inner{ grid-template-columns:1fr auto 1fr; padding:28px 20px; gap:12px; }
+    .stat-row{ grid-template-columns:1fr; gap:6px; padding:18px 8px; }
+    .stat-row:hover{ padding-left:12px; }
+    .win-marks{ padding:0 20px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -286,26 +341,34 @@
 
   /* ===== LANG SWITCH ===== */
   .topbar-right{
-    display:flex; align-items:center; gap:18px;
+    display:flex; align-items:center; gap:20px;
   }
   .lang-switch{
     display:flex; border:1px solid var(--line);
     font-family:'Barlow Condensed', sans-serif;
+    background:var(--ink-2);
+    border-radius:2px;
+    overflow:hidden;
   }
   .lang-btn{
     background:transparent; border:none; cursor:pointer;
     color:var(--bone-dim);
     font-family:inherit;
-    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
-    padding:8px 14px;
-    transition:background 0.2s, color 0.2s;
+    font-size:13px; letter-spacing:0.16em; text-transform:uppercase;
+    padding:8px 16px;
+    font-weight:600;
+    transition:all 0.2s;
   }
   .lang-btn:not(:last-child){ border-right:1px solid var(--line); }
-  .lang-btn.active{ background:var(--crimson); color:var(--bone); }
-  .lang-btn:hover:not(.active){ color:var(--bone); }
+  .lang-btn.active{
+    background:var(--crimson);
+    color:var(--bone);
+    box-shadow:0 0 10px var(--crimson-glow);
+  }
+  .lang-btn:hover:not(.active){ color:var(--bone); background:rgba(255,255,255,0.03); }
 
   @media (max-width:640px){
-    .topbar{ flex-wrap:wrap; gap:14px; }
+    .topbar{ flex-wrap:wrap; gap:16px; }
     .topbar-right{ order:3; width:100%; justify-content:space-between; }
   }
 </style>
@@ -342,12 +405,12 @@
       <div class="scoreboard-inner">
         <div class="record-block wins">
           <div class="record-label" data-ru="Победы" data-az="Qələbələr">Победы</div>
-          <div class="record-num">2</div>
+          <div class="record-num">3</div>
           <div class="record-tag" data-ru="Win" data-az="Qələbə">Win</div>
         </div>
         <div class="record-divider">
           <div class="dash">—</div>
-          <div class="streak" data-ru="2 победы подряд" data-az="2 ardıcıl qələbə">2 победы подряд</div>
+          <div class="streak" data-ru="3 победы подряд" data-az="3 ardıcıl qələbə">3 победы подряд</div>
         </div>
         <div class="record-block losses">
           <div class="record-label" data-ru="Поражения" data-az="Məğlubiyyətlər">Поражения</div>
@@ -358,7 +421,7 @@
       <div class="win-marks">
         <div class="mark">W</div>
         <div class="mark">W</div>
-        <div class="mark pending">?</div>
+        <div class="mark">W</div>
       </div>
     </div>
   </div>
@@ -383,7 +446,7 @@
     </div>
     <div class="stat-row">
       <div class="stat-key" data-ru="Текущий рекорд" data-az="Cari rekord">Текущий рекорд</div>
-      <div class="stat-val" data-ru="2 победы — 0 поражений<small>100% побед</small>" data-az="2 qələbə — 0 məğlubiyyət<small>100% qələbə</small>">2 победы — 0 поражений<small>100% побед</small></div>
+      <div class="stat-val" data-ru="3 победы — 0 поражений<small>100% побед</small>" data-az="3 qələbə — 0 məğlubiyyət<small>100% qələbə</small>">3 победы — 0 поражений<small>100% побед</small></div>
     </div>
   </div>
 
